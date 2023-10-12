@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .serializers import FarmerSerializer,UserSerializer
+from .serializers import *
 from .models import *
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response  # Import Response class
@@ -39,3 +39,11 @@ class FarmerViewSet(viewsets.ModelViewSet):
         }
         # Return a success response with the serialized data
         return Response(response_data, status=201)
+
+class ProductViewset(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductCreateViewset(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductCreateSerializer

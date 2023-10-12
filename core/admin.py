@@ -3,5 +3,6 @@ from .models import *
 admin.site.site_header = "Khoeletso ea Lihoai"
 admin.site.register(User)
 admin.site.register(Farmer)
+admin.site.register(Product)
 
-# Register your models here.
+# Register your models here

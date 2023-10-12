@@ -17,10 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
-from core.viewsets import FarmerViewSet
+from core.viewsets import *
 from core import views
 router = routers.DefaultRouter()
-router.register(r'farmers', FarmerViewSet)
+router.register(r'product', ProductViewset)
+router.register(r'product-create', ProductCreateViewset)
+from django.conf.urls.static import static  # new
+from django.conf import settings  # new
+
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
@@ -29,3 +33,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 # urlpatterns +=router.urls
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #new
+
