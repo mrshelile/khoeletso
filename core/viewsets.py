@@ -13,19 +13,12 @@ class UserViewSet(viewsets.ModelViewSet):
 class FarmerViewSet(viewsets.ModelViewSet):
     queryset = Farmer.objects.all()
     serializer_class = FarmerSerializer
-    # authentication_classes = [TokenAuthentication]  # Use TokenAuthentication for authentication
 
     def create(self, request, *args, **kwargs):
         # Create a mutable copy of the request data
         
         mutable_data = request.data.copy()
-
-        # Hash the password using make_password
-        # if 'password' in mutable_data:
-        #     mutable_data['password'] = make_password(mutable_data['password'])
-
         # Serialize the mutable data using the serializer
-        # print(mutable_data)
         serializer = self.get_serializer(data=mutable_data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -41,7 +34,7 @@ class FarmerViewSet(viewsets.ModelViewSet):
         return Response(response_data, status=201)
 
 class ProductViewset(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by("-created")
     serializer_class = ProductSerializer
 
 class ProductCreateViewset(viewsets.ModelViewSet):

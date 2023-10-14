@@ -22,6 +22,8 @@ from core import views
 router = routers.DefaultRouter()
 router.register(r'product', ProductViewset)
 router.register(r'product-create', ProductCreateViewset)
+router.register(r'farmers', FarmerViewSet)
+
 from django.conf.urls.static import static  # new
 from django.conf import settings  # new
 

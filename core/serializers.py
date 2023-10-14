@@ -18,7 +18,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     #  owner= serializers.PrimaryKeyRelatedField(queryset= User.objects.all(),)
     class Meta:
         model = Product
-        fields = ['id','url','created','owner','name','description','price','image','rate'] 
+        fields = ['id','url','created','owner','name','description','price','image','rate','quantity'] 
 
 class ProductCreateSerializer(serializers.ModelSerializer):
     class Meta:

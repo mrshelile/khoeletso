@@ -26,8 +26,8 @@ class Product(models.Model):
     # owner= models.OneToOneField(Farmer, on_delete=models.)
     owner = models.ForeignKey(Farmer,  on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    description = models.CharField(max_length=500)
-    quantity = models.IntegerField(default=0)  # Default value is 0
+    description = models.CharField(max_length=500,)
+    quantity = models.CharField(default="0",max_length=200)  # Default value is 0
     image=models.ImageField( upload_to="images/",null=True)
     rate = models.IntegerField(default=0)
     price = models.FloatField(default=0.0)
